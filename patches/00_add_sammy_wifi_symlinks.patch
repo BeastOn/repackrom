@@ -1,0 +1,26 @@
+diff --git a/META-INF/com/google/android/updater-script b/META-INF/com/google/android/updater-script
+index fa30e2c..ec12410 100644
+--- a/META-INF/com/google/android/updater-script
++++ b/META-INF/com/google/android/updater-script
+@@ -138,6 +138,21 @@ symlink("toolbox", "/system/bin/cat", "/system/bin/chcon",
+         "/system/bin/touch", "/system/bin/umount", "/system/bin/uptime",
+         "/system/bin/vmstat", "/system/bin/watchprops",
+         "/system/bin/wipe");
++
++ui_print("");
++ui_print("Making symlinks for Sammys wifi driver mimik");
++ui_print("");
++
++symlink("/system/etc/wifi/bcmdhd_apsta.bin", "/system/etc/wifi/bcmdhd_apsta.bin_4354_a1");
++symlink("/system/etc/wifi/bcmdhd_apsta.bin_a0", "/system/etc/wifi/bcmdhd_apsta.bin_4354_a0");
++symlink("/system/etc/wifi/bcmdhd_ibss.bin", "/system/etc/wifi/bcmdhd_ibss.bin_4354_a1");
++symlink("/system/etc/wifi/bcmdhd_ibss.bin_a0", "/system/etc/wifi/bcmdhd_ibss.bin_4354_a0");
++symlink("/system/etc/wifi/bcmdhd_mfg.bin", "/system/etc/wifi/bcmdhd_mfg.bin_4354_a1");
++symlink("/system/etc/wifi/bcmdhd_mfg.bin_a0", "/system/etc/wifi/bcmdhd_mfg.bin_4354_a0");
++symlink("/system/etc/wifi/bcmdhd_sta.bin", "/system/etc/wifi/bcmdhd_sta.bin_4354_a1");
++symlink("/system/etc/wifi/bcmdhd_sta.bin_a0", "/system/etc/wifi/bcmdhd_sta.bin_4354_a0");
++symlink("/vendor/lib/egl/libGLES_mali.so", "/system/vendor/lib/libOpenCL.so.1.1");
++
+ set_metadata_recursive("/system", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+ set_metadata_recursive("/system/addon.d", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+ set_metadata_recursive("/system/bin", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
