@@ -1,6 +1,7 @@
 #!bin/bash
 
-UPDATERSRIPT="META-INF/com/google/updater-script"
+UPDATERSRIPT="META-INF/com/google/android/updater-script"
+              META-INF/com/google/android/updater-script
 
 if [ -z "$1" ]
   then
@@ -24,4 +25,3 @@ done
 zip -r $ROMFILE $UPDATERSCRIPT
 
 rm -r META-INF
-META-INF/com/google/android/updater-script
