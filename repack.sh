@@ -1,7 +1,6 @@
-#!bin/bash
+#!/bin/bash
 
-UPDATERSRIPT="META-INF/com/google/android/updater-script"
-              META-INF/com/google/android/updater-script
+UPDATERSCRIPT="META-INF/com/google/android/updater-script"
 
 if [ -z "$1" ]
   then
@@ -9,9 +8,9 @@ if [ -z "$1" ]
     exit 1
 fi
 
-ROMZIP=$1
+ROMFILE=$1
 
-if [ -f $ROMFILE]
+if [ ! -f $ROMFILE ]
   then
     echo "$ROMFILE does not exist"
     exit 2
@@ -19,9 +18,13 @@ fi
 
 unzip $ROMFILE $UPDATERSCRIPT
 for pf in patches/*.patch; do
-    patch <$pf
+    patch -p1 <$pf
 done
 
 zip -r $ROMFILE $UPDATERSCRIPT
 
 rm -r META-INF
+
+java -Xmx2048m -jar /mnt/export/data/src/android/out/host/linux-x86/framework/signapk.jar -w ../build/target/product/security/testkey.x509.pem ../build/target/product/security/testkey.pk8 $ROMFILE new.zip
+mv new.zip $ROMFILE
+md5sum $ROMFILE >${ROMFILE}.md5sum
