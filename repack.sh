@@ -25,6 +25,6 @@ zip -r $ROMFILE $UPDATERSCRIPT
 
 rm -r META-INF
 
-java -Xmx2048m -jar /mnt/export/data/src/android/out/host/linux-x86/framework/signapk.jar -w ../build/target/product/security/testkey.x509.pem ../build/target/product/security/testkey.pk8 $ROMFILE new.zip
+java -Xmx2048m -jar ../out/host/linux-x86/framework/signapk.jar -w ../build/target/product/security/testkey.x509.pem ../build/target/product/security/testkey.pk8 $ROMFILE new.zip
 mv new.zip $ROMFILE
 md5sum $ROMFILE >${ROMFILE}.md5sum
