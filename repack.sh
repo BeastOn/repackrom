@@ -17,11 +17,12 @@ if [ ! -f $ROMFILE ]
 fi
 
 unzip $ROMFILE $UPDATERSCRIPT
+zip -qd $ROMFILE $UPDATERSCRIPT
 for pf in patches/*.patch; do
     patch -p1 <$pf
 done
 
-zip -r $ROMFILE $UPDATERSCRIPT
+zip $ROMFILE $UPDATERSCRIPT
 
 rm -r META-INF
 
